@@ -1,72 +1,62 @@
 import React from 'react';
-import { Box, Typography, Paper, Button } from '@mui/material';
-import Group from '../../assets/images/Group.svg';
+import { Box, Typography, Button } from '@mui/material';
 import HeroCard from './HeroCards';
-import suitcase from '../../assets/images/suitcase.svg';
-import building from '../../assets/images/building.svg';
 
-const Hero = () => {
+type CardProps = {
+  title: string;
+  description: string;
+  buttonText: string;
+  variant: 'outlined' | 'contained';
+  icon: string;
+  bgColor: string;
+  buttonBgColor: string;
+  buttonTextColor: string;
+};
+
+type HeroProps = {
+  type: 'home' | 'battleground';
+  heading: string;
+  gradientText: string;
+  cards?: CardProps[];
+  description?: string;
+  stats?: { label: string; value: string }[];
+  image: string;
+};
+
+const Hero = ({ type, heading, gradientText, cards, description, stats, image }: HeroProps) => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 4,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        px: '10px'
-      }}
-    >
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, alignItems: 'center', justifyContent: 'space-between', px: '10px' }}>
       <Box sx={{ flex: '1 1 400px', minWidth: 300 }}>
-        <Typography fontWeight="bold" gutterBottom sx={{ fontSize: '48px', fontFamily: 'sans-serif' , py:'10px' }}>
-          Craft the{' '}
-          <Box
-            component="span"
-            sx={{
-              background: 'linear-gradient(90deg, #6c63ff, #f06292)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            technology
+        <Typography fontWeight="bold" gutterBottom sx={{ fontSize: '48px', fontFamily: 'sans-serif', py: '10px' }}>
+          {heading}{' '}
+          <Box component="span" sx={{ background: 'linear-gradient(90deg, #6c63ff, #f06292)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            {gradientText}
           </Box>
         </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 5, mt: 3 }}>
-          <HeroCard
-            title="Bake the best engineers for your tech recipe!"
-            description="Explore our product engineering services"
-            buttonText="For Business"
-            variant="outlined"
-            icon={building}
-            bgColor='#D7D7D7'
-            buttonBgColor='#D7D7D7'
-            buttonTextColor='#0053E2'
-          />
+        {type === 'home' && (
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 5, mt: 3 }}>
+            {cards?.map((card, index) => <HeroCard key={index} {...card} />)}
+          </Box>
+        )}
 
-          <HeroCard
-            title="Cook the best tech recipes here"
-            description="Win Bounty to solve real-world engineering problems & get hired"
-            buttonText="For Developers →"
-            variant="contained"
-            icon={suitcase}
-            bgColor='#FFFFFF'
-             buttonBgColor='#0053E2'
-            buttonTextColor='#FFFFFF'
-          />
-        </Box>
+        {type === 'battleground' && (
+          <>
+            <Typography sx={{ my: 2 }}>{description}</Typography>
+            <Button variant="contained" sx={{ mt: 2 }}>View Programs</Button>
+            <Box sx={{ display: 'flex', gap: 4, mt: 5 }}>
+              {stats?.map((stat, idx) => (
+                <Box key={idx}>
+                  <Typography variant="h6">{stat.value}</Typography>
+                  <Typography variant="caption">{stat.label}</Typography>
+                </Box>
+              ))}
+            </Box>
+          </>
+        )}
       </Box>
-      <Box
-        component="img"
-        src={Group}
-        alt="Hand Graphic"
-        sx={{
-          maxWidth: 400,
-          width: '100%',
-          flex: '1 1 300px',
-          mx: 'auto',
-        }}
-      />
+
+      <Box component="img" src={image} alt="Hero Graphic" sx={{ maxWidth: 400, width: '100%', flex: '1 1 300px', mx: 'auto' }} />
     </Box>
   );
 };
