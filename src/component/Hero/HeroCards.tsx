@@ -25,6 +25,7 @@ const HeroCard: React.FC<HeroCardProps> = ({
     return (
         <Paper
             variant="outlined"
+            elevation={1}
             sx={{
                 gap: 2,
                 p: 4,
@@ -37,7 +38,7 @@ const HeroCard: React.FC<HeroCardProps> = ({
                 alignItems: 'start',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                backgroundColor: bgColor,
+                backgroundColor: `${bgColor} !important`,
             }}
         >
             <Box>
