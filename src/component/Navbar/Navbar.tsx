@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import botLogo from '../../assets/images/botLogo.svg';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 type NavbarProps = {
   links: string[];
@@ -25,27 +26,43 @@ const Navbar = ({ links, ctaButton }: NavbarProps) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
 
+  const isActive = (path: string) => location.pathname === path;
+
   const drawerContent = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
-      {links.map((text) => (
-        <ListItem key={text}>
-          <ListItemButton>
-            <ListItemText primary={text} />
+      <List>
+        <ListItem>
+          <ListItemButton selected={isActive('/')} onClick={() => navigate('/')}>
+            <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
-      ))}
+        <ListItem>
+          <ListItemButton selected={isActive('/battleground')} onClick={() => navigate('/battleground')}>
+            <ListItemText primary="Battleground" />
+          </ListItemButton>
+        </ListItem>
+        {links.map((text) => (
+          <ListItem key={text}>
+            <ListItemButton>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </Box>
   );
 
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
           <img src={botLogo} alt="Bot Logo" width={100} height={80} />
         </Box>
         {isMobile ? (
@@ -59,6 +76,34 @@ const Navbar = ({ links, ctaButton }: NavbarProps) => {
           </>
         ) : (
           <Box sx={{ display: 'flex', gap: 3 }}>
+            <Button
+              onClick={() => navigate('/')}
+              variant="text"
+              sx={{
+                fontSize: '14px',
+                fontWeight: isActive('/') ? 600 : 400,
+                color: '#3C404B',
+                textTransform: 'none',
+                borderBottom: isActive('/') ? '2px solid #0053E2' : 'none',
+                borderRadius: 0
+              }}
+            >
+              Home
+            </Button>
+            <Button
+              onClick={() => navigate('/battleground')}
+              variant="text"
+              sx={{
+                fontSize: '14px',
+                fontWeight: isActive('/battleground') ? 600 : 400,
+                color: '#3C404B',
+                textTransform: 'none',
+                borderBottom: isActive('/battleground') ? '2px solid #0053E2' : 'none',
+                borderRadius: 0
+              }}
+            >
+              Battleground
+            </Button>
             {links.map((link) => (
               <Button key={link} variant="text" sx={{ fontSize: '14px', fontWeight: 400, color: '#3C404B', textTransform: 'none' }}>
                 {link}
