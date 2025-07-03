@@ -1,7 +1,5 @@
 import { Box, Typography, Button } from '@mui/material';
 import HeroCard from './HeroCards';
-import Cards from '../../pages/Cards';
-import SubscriptonCards from '../../pages/SubscriptionCards';
 
 type CardProps = {
   title: string;

@@ -1,9 +1,9 @@
 import { Card, CardContent, CardActions, Typography, Button, Box } from '@mui/material';
-import netflix from '../assets/images/netflix.svg';
-import spotify from '../assets/images/spotify.svg';
-import amazon from '../assets/images/amazon.svg';
-import people from '../assets/images/people.svg';
-import calendar from '../assets/images/calendar.svg';
+import netflix from '../../assets/images/netflix.svg';
+import spotify from '../../assets/images/spotify.svg';
+import amazon from '../../assets/images/amazon.svg';
+import people from '../../assets/images/people.svg';
+import calendar from '../../assets/images/calendar.svg';
 
 
 
@@ -44,7 +44,8 @@ const SubscriptionCards = () => {
             flexWrap: 'wrap',
             gap: 4,
             justifyContent: 'center',
-            p: 5
+            p: 5,
+            backgroundColor : '#FDF8F4',
         }}>
             {cardData.map((card, index) => (
                 <Card key={index}
