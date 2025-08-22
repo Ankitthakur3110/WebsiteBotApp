@@ -29,7 +29,7 @@ const steps = [
   }
 ];
 
-const ProgramRoadmap = () => {
+const ProgramRoadmap = ({type} : any) => {
   return (
     <Box sx={{ py: { xs: 6, md: 8 }, px: 2, textAlign: 'center', backgroundColor: '#F3F5F7' }}>
       <Typography
@@ -40,7 +40,7 @@ const ProgramRoadmap = () => {
           color: '#3C404B'
         }}
       >
-        Program Roadmap
+        {type === 'battleground' ? 'Program Roadmap' : 'The path for you'}
       </Typography>
       <Typography
         sx={{
@@ -77,8 +77,8 @@ const ProgramRoadmap = () => {
           >
             <Box
               sx={{
-                backgroundColor: '#FFEDD5',
-                color: '#FB923C',
+                backgroundColor: type === 'battleground' ? '#FFEDD5' : '#E6EEFF',
+                color:  type === 'battleground' ? '#FB923C' : '#0053E2',
                 display: 'inline-block',
                 px: 2,
                 py: 0.5,

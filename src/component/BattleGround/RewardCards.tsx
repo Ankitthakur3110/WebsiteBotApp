@@ -16,10 +16,10 @@ const RewardCards = () => {
             sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' },
-                flexWrap: 'wrap',
+                flexWrap : {xs : 'warp'},
                 gap: 4,
                 alignItems: 'center',
-                justifyContent: 'center', // center on larger screens
+                justifyContent: 'center',
                 p: 2
             }}
         >
@@ -36,10 +36,10 @@ const RewardCards = () => {
                         backgroundColor: 'white',
                         boxShadow: 2,
                         borderRadius: '16px',
-                        width: { xs: '100%', sm: '80%', md: '30%' },
+                        width: { xs: '100%', sm: '100%', md: '40%' },
                         maxWidth: '300px'
                     }}
-                >
+                 >
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                         <Typography sx={{ fontSize: { xs: '20px', md: '22px' }, fontWeight: 800 }}>
                             {stat.value}
