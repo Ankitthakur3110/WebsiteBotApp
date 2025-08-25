@@ -2,14 +2,7 @@ import React from 'react';
 import { Avatar, Box, Chip, Container, Stack, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import Navbar from '../component/Navbar/Navbar';
-import RewardCards from '../component/BattleGround/RewardCards';
-import SubscriptionCards from '../component/BattleGround/SubscriptionCards';
-import HighlightsSection from '../component/BattleGround/HighlightsSection';
 import ProgramRoadmap from '../component/BattleGround/ProgramRoadmap';
-import IndustryExperts from '../component/BattleGround/IndustryExperts';
-import TestimonialsCarousel from '../component/BattleGround/TestimonialsCarousel';
-import BackedBy from '../component/BattleGround/BackedBy';
-import ConnectCards from '../component/BattleGround/ConnectCards';
 import BattleGroundFooter from '../component/BattleGround/BattleGroundFooter';
 import netflix from '../assets/images/netflix.svg';
 import calendar22 from '../assets/images/calendar22.svg';
@@ -22,7 +15,6 @@ import DetailsLayout from '../component/Program/DetailsLayout';
 import MentorLayout from '../component/Program/MentorLayout';
 import ProgramSchedule from '../component/Program/ProgramSchedule';
 import FAQCards from '../component/Program/FAQCards';
-import ContactForm from '../component/Program/ContactSection';
 import ContactSection from '../component/Program/ContactSection';
 
 
@@ -44,9 +36,6 @@ const ProgramBlueBox = [
         title: 'No interviews, finalists get offers from netflix',
     }
 ]
-
-
-
 
 
 const ProgramPage = () => {
@@ -99,7 +88,7 @@ const ProgramPage = () => {
                                         Work like Netflix team to solve AR/VR inclusion
                                     </Typography>
                                 </Box>
-                                <Box sx={{ display: 'flex ', flexDirection: 'row', alignItems: 'center', gap: 2, px: 2, }}>
+                                <Box sx={{ display: 'flex ', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', gap: 2, px: 2, }}>
                                     <Chip
                                         avatar={<Avatar src={public22} />}
                                         label="4 out of 20 filled"

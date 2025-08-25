@@ -21,16 +21,16 @@ const FAQCards = () => {
     return (
         <Box
             sx={{
-                width: '100vw',               // force full viewport width
+                width: '100vw',
                 maxWidth: '100vw',
                 display: 'flex',
-                flexDirection: 'row',
-                gap: 8,
-                p: '48px',
-                my: '40px'
+                flexDirection: { xs: 'column', md: 'row' },
+                gap: {xs : 4, md : 8},
+                p: { xs: '24px', md: '48px' },
+                my: { xs: '1px', md: '40px' }
             }}
         >
-            <Typography sx={{ fontWeight: 800, fontSize: '32px', lineHeight: '48px', textAlign: 'start' }}>Frequently asked questions</Typography>
+            <Typography sx={{ fontWeight: 800, fontSize: { xs: '24px', md: '32px' }, lineHeight: '48px', textAlign: 'start' }}>Frequently asked questions</Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}>
                 {faqs.map((item, index) => {
                     const isOpen = openIndex === index;

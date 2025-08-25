@@ -8,7 +8,7 @@ const MentorLayout = () => {
         <Box
             sx={{
                 display: 'flex',
-                flexDirection: 'row',
+                flexDirection: { xs: 'column', md: 'row' },
                 justifyContent: 'space-evenly',
                 alignItems: 'center',
                 backgroundColor: '#FDF8F4',
@@ -18,7 +18,7 @@ const MentorLayout = () => {
             }}>
             <Box
                 sx={{
-                    width: { xs: '100%', sm: '45%', md: '22%' },
+                    width: { xs: '75%', sm: '45%', md: '22%' },
                     backgroundColor: '#fff',
                     borderRadius: '16px',
                     boxShadow: 2,
@@ -75,8 +75,8 @@ const MentorLayout = () => {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
                     justifyContent: 'space-evenly',
-                    width: '50%',
-                    gap: 3
+                    width:  { xs: '80%', md: '50%' },
+                    gap: {xs: 2, md : 3},
                 }}>
                 <Typography
                     sx={{
@@ -89,7 +89,7 @@ const MentorLayout = () => {
                 </Typography>
                 <Typography
                     sx={{
-                        fontSize: { xs: '8px', sm: '12px', md: '16px' },
+                        fontSize: { xs: '10px', sm: '12px', md: '16px' },
                         fontWeight: 400,
                         lineHeight: '28px',
                         fontFamily: 'sans-serif'
@@ -99,7 +99,7 @@ const MentorLayout = () => {
                 </Typography>
                 <Typography
                     sx={{
-                        fontSize: { xs: '9px', sm: '10px', md: '14px' },
+                        fontSize: { xs: '10px', sm: '10px', md: '14px' },
                         fontWeight: 600,
                         lineHeight: '88px',
                         fontFamily: 'sans-serif',

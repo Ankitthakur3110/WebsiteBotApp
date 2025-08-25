@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, TextField, Button, Typography, Card } from '@mui/material';
 import group4 from '../../assets/images/group4.svg';
 import maskgroup3 from '../../assets/images/maskgroup3.svg';
+import { isMobile } from 'react-device-detect';
 
 const ContactSection = () => {
   const [form, setForm] = useState({
@@ -23,24 +24,25 @@ const ContactSection = () => {
   return (
     <Box
       sx={{
-        width: '100vw',               // force full viewport width
-        maxWidth: '100vw',
+        width: '100%',
+        maxWidth: '100%',
         boxSizing: 'border-box',
         display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
+        flexDirection: isMobile ? 'column' : 'row', // stack for mobile
         gap: 3,
-        justifyContent: 'center',     // center content horizontally
+        justifyContent: 'center',
         alignItems: 'stretch',
         px: { xs: 2, md: 6 },
-        py: 12,
+        py: { xs: 2, md: 12 },
         backgroundColor: "#F3F5F7",
-        overflowX: 'hidden'           // avoid accidental scrollbar
+        overflowX: 'hidden'
       }}
     >
       {/* LEFT CARD */}
       <Card
         sx={{
-          flex: '1 1 0',
+          flex: isMobile ? '1 1 0' : '1 1 0', // full width on mobile
+          width: isMobile ? '100%' : 'auto',
           backgroundColor: 'white',
           p: 3,
           display: 'flex',
@@ -49,15 +51,18 @@ const ContactSection = () => {
           boxShadow: 3,
           position: 'relative',
           overflow: 'hidden',
-          maxWidth: '100%'
+          mb: isMobile ? 3 : 0, // spacing between cards on mobile
+          minHeight: isMobile ? '70vh' : 'auto',
         }}
       >
-        <Typography sx={{ mb: 2, fontSize : '32px' , fontWeight : 800 , lineHeight : '48px' , textAlign : 'center' }}>Still have doubts?</Typography>
-        <Typography sx={{ mb: 2, fontSize : '16px' , fontWeight : 400 , lineHeight : '28px' , textAlign : 'center' }}>
+        <Typography sx={{ mb: 2, fontSize: { xs: '18px', md: '32px' }, fontWeight: 800, lineHeight: '48px', textAlign: 'center' }}>
+          Still have doubts?
+        </Typography>
+        <Typography sx={{ mb: 2, fontSize: { xs: '14px', md: '16px' }, fontWeight: 400, lineHeight: '28px', textAlign: 'center' }}>
           Ask us and we will revert back to you soon
         </Typography>
 
-        {/* IMAGE CONTAINER AT BOTTOM */}
+        {/* IMAGE CONTAINER */}
         <Box sx={{ position: 'relative', width: '100%', mt: 'auto' }}>
           <Box
             component="img"
@@ -68,7 +73,7 @@ const ContactSection = () => {
               bottom: 0,
               left: '50%',
               transform: 'translateX(-50%)',
-              width: '140%',
+              width: isMobile ? '200%' : '140%', // make it bigger on mobile
               height: 'auto',
               zIndex: 0
             }}
@@ -87,23 +92,23 @@ const ContactSection = () => {
         </Box>
       </Card>
 
-      {/* CONTACT FORM CARD (150% width compared to left) */}
+      {/* CONTACT FORM CARD */}
       <Card
         sx={{
-          flex: '1.5 1 0',             // makes it 150% wider than left
+          flex: isMobile ? '1 1 0' : '1.5 1 0',
+          width: isMobile ? '100%' : 'auto',
+          minHeight: isMobile ? '70vh' : 'auto',
           p: 3,
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
           borderRadius: 2,
           boxShadow: 3,
-          width: '100%',
-          maxWidth: '100%'
         }}
       >
-        <Typography variant="h5" sx={{ mb: 1 }}>Send us a message</Typography>
+        <Typography sx={{ mb: 1, fontSize : {xs : '16px' , md: '24px'} }}>Send us a message</Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 2 }}>
             <TextField
               label="First Name"
               name="name"
@@ -143,7 +148,7 @@ const ContactSection = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ mt: 2, alignSelf: 'flex-start', backgroundColor: '#0053E2', width : '100%' }}
+            sx={{ mt: 2, alignSelf: 'flex-start', backgroundColor: '#0053E2', width: '100%' }}
           >
             Send Message
           </Button>

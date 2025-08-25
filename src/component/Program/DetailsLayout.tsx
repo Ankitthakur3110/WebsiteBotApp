@@ -7,7 +7,7 @@ const DetailsLayout = () => {
     <Box
       sx={{
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: { xs: 'column', md: 'row' },
         width: '100%',
         height: '100%',            // Full height
         alignItems: 'stretch',     // Text + image aligned
