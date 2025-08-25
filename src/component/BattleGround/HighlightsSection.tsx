@@ -7,6 +7,10 @@ import star from '../../assets/images/star.svg';
 import publicImg from '../../assets/images/public.svg';
 import cashList from '../../assets/images/cashList.svg';
 
+interface highlightsProps {
+    type: 'program' | 'battleground'
+}
+
 const highlights = [
     {
         image: `${star}`,
@@ -31,31 +35,36 @@ const highlights = [
     }
 ];
 
-const HighlightsSection = () => {
+
+
+const HighlightsSection = ({ type }: highlightsProps) => {
     return (
         <Box sx={{ py: { xs: 6, md: 8, lg: 10 }, px: 2, textAlign: 'center' }}>
-            <Typography
-                sx={{
-                    fontSize: { xs: '28px', md: '32px' },
-                    fontWeight: 800,
-                    mb: 2
-                }}
-            >
-                Program Highlights
-            </Typography>
-            <Typography
-                sx={{
-                    maxWidth: '700px',
-                    mx: 'auto',
-                    fontSize: { xs: '14px', md: '16px' },
-                    fontWeight: 400,
-                    mb: { xs: 6, md: 8 }
-                }}
-            >
-                We partner with the top 1% of instructors to create high-impact CBCs on
-                personal and professional growth for learners all over the world.
-            </Typography>
-
+            {type === 'battleground' &&
+                <>
+                    <Typography
+                        sx={{
+                            fontSize: { xs: '28px', md: '32px' },
+                            fontWeight: 800,
+                            mb: 2
+                        }}
+                    >
+                        Program Highlights
+                    </Typography>
+                    <Typography
+                        sx={{
+                            maxWidth: '700px',
+                            mx: 'auto',
+                            fontSize: { xs: '14px', md: '16px' },
+                            fontWeight: 400,
+                            mb: { xs: 6, md: 8 }
+                        }}
+                    >
+                        We partner with the top 1% of instructors to create high-impact CBCs on
+                        personal and professional growth for learners all over the world.
+                    </Typography>
+                </>
+            }
             <Stack
                 direction={{ xs: 'column', md: 'row' }}
                 spacing={{ xs: 4, md: 6 }}
@@ -90,7 +99,7 @@ const HighlightsSection = () => {
                         >
                             {item.title}
                         </Typography>
-                        <Typography sx={{ fontSize: '16px',fontWeight: 400, color: '#3C404B' }}>
+                        <Typography sx={{ fontSize: '16px', fontWeight: 400, color: '#3C404B' }}>
                             {item.description}
                         </Typography>
                     </Box>

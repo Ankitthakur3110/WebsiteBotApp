@@ -23,7 +23,7 @@ const BattlegroundPage = () => {
         minHeight: '100vh'
       }}>
       <Navbar
-        links={['Programs', 'Features']}
+        links={['For Business', 'For Developers']}
         ctaButton={{ label: 'Talk to Us', href: '#talk' }}
       />
       <Box
@@ -32,7 +32,7 @@ const BattlegroundPage = () => {
       >
         <Container maxWidth="xl">
           <Box sx={{ display: 'flex', flexDirection: 'column', justifyItems: 'center', alignItems: 'center' }}>
-            
+
             <Box
               component={motion.div}
               initial={{ opacity: 0, y: 40 }}
@@ -80,7 +80,7 @@ const BattlegroundPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <HighlightsSection />
+              <HighlightsSection type="battleground" />
             </Box>
 
             <Box
@@ -90,7 +90,7 @@ const BattlegroundPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <ProgramRoadmap />
+              <ProgramRoadmap type="battleground" />
             </Box>
 
             <Box
