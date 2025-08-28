@@ -74,7 +74,7 @@ const IndustryExperts = () => {
                 flexWrap="wrap"
                 justifyContent="center"
                 gap={4}
-            >
+             >
                 {experts.map((expert, idx) => (
                     <Box
                         key={idx}

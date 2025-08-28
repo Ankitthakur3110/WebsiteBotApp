@@ -5,6 +5,8 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import BattlegroundPage from './pages/BattlegroundPage';
+import ProgramPage from './pages/ProgramPage';
+import EnrollForm from './pages/EnrollForm';
 
 const theme = createTheme({
   palette: {
@@ -23,7 +25,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/battleground" element={<BattlegroundPage />} />
-          </Routes>
+            <Route path="/program" element={<ProgramPage />} />
+            <Route path='/enrollForm' element={<EnrollForm />} />
+          </Routes> 
         </Router>
       </ThemeProvider>
     </Provider>
