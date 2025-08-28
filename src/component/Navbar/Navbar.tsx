@@ -53,6 +53,12 @@ const Navbar = ({ links, ctaButton }: NavbarProps) => {
             <ListItemText primary="Program" />
           </ListItemButton>
         </ListItem>
+         <ListItem>
+          <ListItemButton selected={isActive('/enrollForm')} onClick={() => navigate('/enrollForm')}>
+            <ListItemText primary="enrollForm" />
+          </ListItemButton>
+        </ListItem>
+        
         {links.map((text) => (
           <ListItem key={text}>
             <ListItemButton>
@@ -122,6 +128,20 @@ const Navbar = ({ links, ctaButton }: NavbarProps) => {
               }}
             >
               Program
+            </Button>
+            <Button
+              onClick={() => navigate('/enrollForm')}
+              variant="text"
+              sx={{
+                fontSize: '14px',
+                fontWeight: isActive('/enrollForm') ? 600 : 400,
+                color: '#3C404B',
+                textTransform: 'none',
+                borderBottom: isActive('/enrollForm') ? '2px solid #0053E2' : 'none',
+                borderRadius: 0
+              }}
+            >
+              EnrollForm
             </Button>
             {links.map((link) => (
               <Button key={link} variant="text" sx={{ fontSize: '14px', fontWeight: 400, color: '#3C404B', textTransform: 'none' }}>
